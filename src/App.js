@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import SharedLayout from "./Pages/SharedLayout";
+import { BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Dashboard from "./Pages/Dashboard";
+import FoodOrder from "./Pages/FoodOrder";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="food-order" element={<FoodOrder />} />
+            <Route path="food-order2" element={<FoodOrder />} />
+            <Route path="food-order3" element={<FoodOrder />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
